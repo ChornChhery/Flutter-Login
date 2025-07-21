@@ -42,6 +42,7 @@ class _SignUpFormPageState extends State<SignUpFormPage> {
     }
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,6 +51,7 @@ class _SignUpFormPageState extends State<SignUpFormPage> {
         padding: const EdgeInsets.all(20.0),
         child: Form(
           key: _formKey,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           child: ListView(
             children: [
               // Full Name
@@ -62,6 +64,9 @@ class _SignUpFormPageState extends State<SignUpFormPage> {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter your full name';
+                  }
+                  if (value.length > 10){
+                    return 'Please enter name last than 10 characters';
                   }
                   return null;
                 },
@@ -80,7 +85,7 @@ class _SignUpFormPageState extends State<SignUpFormPage> {
                   if (value == null || value.isEmpty) {
                     return 'Please enter your email';
                   }
-                  if (!value.contains('@')) {
+                  if (!value.contains('@email.com')) {
                     return 'Please enter a valid email';
                   }
                   return null;
