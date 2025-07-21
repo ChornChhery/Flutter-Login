@@ -12,6 +12,7 @@ class _KeyboardTypeExampleState extends State<KeyboardTypeExample> {
   final numberController = TextEditingController();
   final phoneController = TextEditingController();
   final multilineController = TextEditingController();
+  final addressController = TextEditingController();
 
   @override
   void dispose() {
@@ -19,6 +20,7 @@ class _KeyboardTypeExampleState extends State<KeyboardTypeExample> {
     numberController.dispose();
     phoneController.dispose();
     multilineController.dispose();
+    addressController.dispose();
     super.dispose();
   }
 
@@ -31,7 +33,8 @@ class _KeyboardTypeExampleState extends State<KeyboardTypeExample> {
           'Email: ${emailController.text}\n'
           'Number: ${numberController.text}\n'
           'Phone: ${phoneController.text}\n'
-          'Multiline: ${multilineController.text}',
+          'Multiline: ${multilineController.text}\n'
+          'Address: ${addressController.text}',
         ),
       ),
     );
@@ -100,6 +103,19 @@ class _KeyboardTypeExampleState extends State<KeyboardTypeExample> {
               ),
             ),
             SizedBox(height: 10),
+
+            // Address
+            TextField(
+              controller: addressController,
+              keyboardType: TextInputType.streetAddress,
+              style: fieldStyle,
+              decoration: InputDecoration(
+                labelText: 'Address',
+                border: OutlineInputBorder(),
+                isDense: true,
+              ),
+            ),
+            SizedBox(height: 7),
 
             // Button
             ElevatedButton(
